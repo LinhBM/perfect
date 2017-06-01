@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @products = @user.products
     if current_user.following? @user
       @following = current_user.active_relationships
         .find_by followed_id: @user.id

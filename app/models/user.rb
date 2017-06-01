@@ -3,22 +3,19 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
-  has_one :cart
-  has_one :shop
 
   has_many :feedbacks, dependent: :destroy
+  has_many :carts
   has_many :likeships, dependent: :destroy
   has_many :likeship_comment_products, through: :likeships,
     class_name: CommentProduct.name
-
   has_many :products, dependent: :destroy
   has_many :comment_products, dependent: :destroy
   has_many :cmt_products, through: :comment_products,
     class_name: Product.name
   has_many :relationships, dependent: :destroy
-  has_many :comment_shops
+  has_many :comment_products
   has_many :rating_products
-  has_many :rating_shops
   has_many :active_relationships, class_name: Relationship.name,
     foreign_key: "follower_id", dependent: :destroy
   has_many :passive_relationships, class_name: Relationship.name,

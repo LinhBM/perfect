@@ -17,7 +17,8 @@
                 edit_user_registration_path %></li>
               <li><%= link_to t(".setting"), edit_user_password_path %></li>
               <li class="divider"></li>
-              <li><%= link_to t(".logout"), destroy_user_session_path, method: :delete %></li>
+              <li><%= link_to t(".logout"), destroy_user_session_path,
+                method: :delete %></li>
             </ul>
           </li>
           <% if can? :read, Feedback %>
@@ -25,10 +26,11 @@
           <% else %>
             <li><%= link_to t("feedback"), new_feedback_path %></li>
           <% end %>
+          <li><%= link_to t("products"),
+            user_products_path(current_user) %></li>
         <% else %>
           <li><%= link_to t(".login"), user_session_path %></li>
         <% end %>
-        <li><%= link_to t("products"), products_path %></li>
         <li><%= link_to t(".english"), locale: :en %></li>
         <li><%= link_to t(".vietnam"), locale: :vn %></li>
       </ul>

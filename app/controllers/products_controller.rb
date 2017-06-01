@@ -1,21 +1,22 @@
 class ProductsController < ApplicationController
   load_and_authorize_resource
   include ProductsHelper
+  before_action :find_user, only: :index
   before_action :find_product, except: [:index, :new, :create]
+  before_action :load_category, only: [:new, :edit]
 
   def index
-    @products = Product.all
+    @products = @user.products
   end
 
   def new
     @product = current_user.products.build
-    @categories = Category.all
   end
 
   def create
     @product = current_user.products.build product_params
     if @product.save
-      redirect_to products_url
+      redirect_to user_products_url current_user
     else
       render :new
     end
@@ -26,12 +27,11 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @categories = Category.all
   end
 
   def update
     if @product.update product_params
-      redirect_to products_url
+      redirect_to user_products_url current_user
     else
       render :edit
     end
@@ -54,5 +54,17 @@ class ProductsController < ApplicationController
       flash[:error] = t "product_not_found"
       redirect_to root_url
     end
+  end
+
+  def find_user
+    @user = User.find_by id: params[:user_id]
+    unless @user
+      flash[:error] = t "user_not_found"
+      redirect_to root_url
+    end
+  end
+
+  def load_category
+    @user = Category.all
   end
 end

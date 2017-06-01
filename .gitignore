@@ -23,3 +23,4 @@
 /config/secrets.yml
 /.framgia-ci-reports/*
 /public/*
+/db/seeds.rb
