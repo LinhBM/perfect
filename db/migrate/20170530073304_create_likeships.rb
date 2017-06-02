@@ -1,10 +1,12 @@
 class CreateLikeships < ActiveRecord::Migration[5.0]
   def change
     create_table :likeships do |t|
-      t.references :user, foreign_key: true
-      t.references :comment_product, foreign_key: true
+      t.integer :user_id
+      t.integer :comment_product_id
 
       t.timestamps
     end
+    add_index :likeships, :user_id, unique: true
+    add_index :likeships, :comment_product_id, unique: true
   end
 end

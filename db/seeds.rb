@@ -7,3 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Category.create name: "food"
+Category.create! id: 1, name: "food"
+Category.create! id: 2, name: "fast"
