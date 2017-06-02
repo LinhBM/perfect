@@ -6,9 +6,12 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.text :description
       t.string :image
       t.float :avg_rating
-      t.references :category, foreign_key: true
+      t.integer :category_id
+      t.integer :user_id
 
       t.timestamps
     end
+    add_index :products, :category_id, unique: true
+    add_index :products, :user_id, unique: true
   end
 end

@@ -1,6 +1,10 @@
 class FeedbacksController < ApplicationController
   load_and_authorize_resource
 
+  def index
+    @feedback = Feedback.all.newest
+  end
+
   def new
   end
 

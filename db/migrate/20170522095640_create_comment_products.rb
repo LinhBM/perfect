@@ -2,10 +2,12 @@ class CreateCommentProducts < ActiveRecord::Migration[5.0]
   def change
     create_table :comment_products do |t|
       t.text :content
-      t.references :user, foreign_key: true
-      t.references :product, foreign_key: true
+      t.integer :user_id
+      t.integer :product_id
 
       t.timestamps
     end
+    add_index :comment_products, :user_id, unique: true
+    add_index :comment_products, :product_id, unique: true
   end
 end
