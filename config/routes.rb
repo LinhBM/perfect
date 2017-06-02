@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get "pages/contact"
   get "pages/product"
 
-  resources :users, only: [:index, :show] do
+  resources :users, only: [:index, :show, :destroy] do
     resources :relationships, only: [:index]
     resources :products, only: [:index]
   end
@@ -21,4 +21,6 @@ Rails.application.routes.draw do
     resources :feedbacks, only: [:index, :show, :destroy]
     resources :categories
   end
+  resource :order, only: [:show]
+  resources :order_items, only: [:create, :update, :destroy]
 end
