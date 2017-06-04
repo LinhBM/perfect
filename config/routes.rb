@@ -19,5 +19,6 @@ Rails.application.routes.draw do
   resources :feedbacks, only: [:new, :create]
   namespace :admin do
     resources :feedbacks, only: [:index, :show, :destroy]
+    resources :categories
   end
 end

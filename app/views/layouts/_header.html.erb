@@ -26,6 +26,9 @@
           <% else %>
             <li><%= link_to t("feedback"), new_feedback_path %></li>
           <% end %>
+          <% if can? :read, Category %>
+            <li><%= link_to t("category"), admin_categories_path %></li>
+          <% end %>
           <li><%= link_to t("products"),
             user_products_path(current_user) %></li>
         <% else %>
