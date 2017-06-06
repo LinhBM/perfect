@@ -151,6 +151,15 @@ en:
   order_items:
     create:
       alert: "not valid."
+  user:
+    pay_with_card:
+      not_verify: "Could not verify card."
+      usd: "usd"
+      transaction: "Stripe transaction for %{self_email}"
+    subscribe:
+      status: "subscribed"
+      subscribed: "Subscribed %{self_email} to MailChimp"
+
   product_not_found: "Product not found!"
   the_form_contains: "The form contains"
   error_counter:
