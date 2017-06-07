@@ -8,6 +8,8 @@ class Product < ApplicationRecord
   has_many :comment_products, dependent: :destroy
   has_many :rating_product, dependent: :destroy
 
+  ratyrate_rateable "quality", "attitude", "price"
+
   has_attached_file :product_image, styles: {thumb: "150x150#"},
     default_url: "https://demo.productdent.com//img/no_product.png"
   validates_attachment_content_type :product_image,

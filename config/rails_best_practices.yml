@@ -16,7 +16,12 @@ NotUseDefaultRouteCheck: { }
 NotUseTimeAgoInWordsCheck: { }
 OveruseRouteCustomizationsCheck: { customize_count: 3 }
 ProtectMassAssignmentCheck: {
-  ignored_files: ['app/models/application_record.rb']
+  ignored_files: [
+  'app/models/application_record.rb',
+  'app/models/rating_cache.rb',
+  'app/models/average_cache.rb',
+  'app/models/rate.rb',
+  'app/models/overall_average.rb']
 }
 RemoveEmptyHelpersCheck: { }
 #RemoveTabCheck: { }

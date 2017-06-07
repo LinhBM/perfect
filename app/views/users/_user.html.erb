@@ -2,6 +2,7 @@
   <%= link_to image_tag(user.image.url(:small)), user.image.url %>
   <a class="tab" />
   <%= link_to user.username, user %>
+  <%= rating_for user, "quality", star: 5 %>
 </li>
 <% if current_user.admin? && !user.current_user?(current_user) %>
   <%= link_to t(".linkto6"), user, method: :delete,

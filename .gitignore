@@ -25,3 +25,4 @@
 /public/*
 /db/seeds.rb
 /.framgia-ci-result.temp.yml
+/app/assets/images/*

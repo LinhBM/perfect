@@ -47,17 +47,17 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
+  gem "devise"
+  gem "bootstrap-sass", "3.3.6"
+  gem "will_paginate", "3.1.0"
+  gem "bootstrap-will_paginate", "0.0.10"
+  gem "paperclip"
+  gem "cancancan", "~> 1.10"
+  gem "ratyrate"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem "devise"
-gem "bootstrap-sass", "3.3.6"
-gem "will_paginate", "3.1.0"
-gem "bootstrap-will_paginate", "0.0.10"
-gem "paperclip"
-gem "cancancan", "~> 1.10"
 
 group :test do
   gem "rspec-collection_matchers"

@@ -32,6 +32,10 @@ class User < ApplicationRecord
 
   scope :not_is_admin, (->_user{where admin: false})
 
+  ratyrate_rateable "quality"
+
+  ratyrate_rater
+
   def follow other_user
     following << other_user
   end
