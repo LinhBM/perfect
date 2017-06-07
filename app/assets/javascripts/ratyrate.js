@@ -41,7 +41,7 @@ $(document).on('turbolinks:load', function() {
       click: function(score, evt) {
         var _this = this;
         if (score == null) { score = 0; }
-        $.post('<%= Rails.application.class.routes.url_helpers.rate_path %>',
+        $.post('/rate',
         {
           score: score,
           dimension: $(this).attr('data-dimension'),

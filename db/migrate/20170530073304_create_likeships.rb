@@ -6,7 +6,7 @@ class CreateLikeships < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
-    add_index :likeships, :user_id, unique: true
-    add_index :likeships, :comment_product_id, unique: true
+    add_index :likeships, :user_id
+    add_index :likeships, :comment_product_id
   end
 end

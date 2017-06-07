@@ -7,7 +7,7 @@ class CreateCommentProducts < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
-    add_index :comment_products, :user_id, unique: true
-    add_index :comment_products, :product_id, unique: true
+    add_index :comment_products, :user_id
+    add_index :comment_products, :product_id
   end
 end

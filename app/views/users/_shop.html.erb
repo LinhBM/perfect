@@ -4,6 +4,8 @@
       <div class="card">
         <div class="card-block">
           <div class="clearfix">
+            <br/>
+            <%= rating_for user, "quality", star: 5 %>
             <%= image_tag user.image.url(:med),
               class: "img-circle pull-left user-shop-image" %>
             <div class="pull-right">

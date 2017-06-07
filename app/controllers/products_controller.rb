@@ -39,7 +39,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    redirect_to products_url
+    redirect_to user_products_path current_user
   end
 
   private
@@ -69,6 +69,7 @@ class ProductsController < ApplicationController
   end
 
   def load_order
-    @product = current_order.order_items.new if user_signed_in?
+    @order_item = current_order.order_items.new if user_signed_in? &&
+      current_order.present?
   end
 end

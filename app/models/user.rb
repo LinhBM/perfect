@@ -15,7 +15,6 @@ class User < ApplicationRecord
     class_name: Product.name
   has_many :relationships
   has_many :comment_products
-  has_many :rating_products
   has_many :active_relationships, class_name: Relationship.name,
     foreign_key: "follower_id", dependent: :destroy
   has_many :passive_relationships, class_name: Relationship.name,
@@ -31,6 +30,10 @@ class User < ApplicationRecord
     size: {in: 0..10.megabytes}
 
   scope :not_is_admin, (->_user{where admin: false})
+
+  ratyrate_rateable "quality"
+
+  ratyrate_rater
 
   def follow other_user
     following << other_user
