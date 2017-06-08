@@ -54,6 +54,7 @@ group :development do
   gem "paperclip"
   gem "cancancan", "~> 1.10"
   gem "ratyrate"
+  gem "ransack"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

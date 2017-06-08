@@ -3,6 +3,13 @@
     <% if user_signed_in? %>
       <%= link_to t("sell_product"), new_product_path,
         class: "btn btn-success" unless current_user.admin? %>
+        <%= search_form_for @search do |f| %>
+          <div class="field">
+            <%= f.label :title, "Name contains" %>
+            <%= f.text_field :title %>
+          </div>
+        <div class="actions"><%= f.submit "Search" %></div>
+      <% end %>
     <% end %>
     <br><br>
     <div class="row">

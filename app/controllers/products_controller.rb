@@ -7,6 +7,8 @@ class ProductsController < ApplicationController
 
   def index
     @products = @user.products
+    @search = Product.search(params[:q])
+    @result = @search.result
   end
 
   def new

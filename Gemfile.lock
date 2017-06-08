@@ -159,6 +159,8 @@ GEM
       mimemagic (~> 0.3.0)
     parser (2.4.0.0)
       ast (~> 2.2)
+    polyamorous (1.3.1)
+      activerecord (>= 3.0)
     powerpack (0.1.1)
     public_suffix (2.0.5)
     puma (3.8.2)
@@ -203,6 +205,12 @@ GEM
     rainbow (2.2.2)
       rake
     rake (12.0.0)
+    ransack (1.8.2)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      i18n
+      polyamorous (~> 1.3)
     ratyrate (1.2.2.alpha)
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
@@ -331,6 +339,7 @@ DEPENDENCIES
   rails (~> 5.0.3)
   rails-controller-testing
   rails_best_practices
+  ransack
   ratyrate
   reek
   rspec-activemodel-mocks
