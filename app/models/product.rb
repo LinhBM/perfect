@@ -13,4 +13,5 @@ class Product < ApplicationRecord
     default_url: "https://demo.productdent.com//img/no_product.png"
   validates_attachment_content_type :product_image,
     content_type: /\Aimage\/.*\z/
+  Product.search
 end
