@@ -29,4 +29,12 @@ class ApplicationController < ActionController::Base
   def page_error
     render template: "public/404", status: 403
   end
+
+  def delele_session
+    session[:order_id] = nil
+  end
+
+  def find_sale
+    @user = User.find_by id: params[:id]
+  end
 end

@@ -30,8 +30,9 @@ class User < ApplicationRecord
     content_type: {content_type: /\Aimage/},
     size: {in: 0..10.megabytes}
 
-  scope :only_sale_man, (->{where role: 1})
-  scope :unless_admin, (->{where("role not in (0)")})
+  scope :only_sale_man, (->_user{where role: 1})
+  scope :unless_admin, (->_user{where("username not in ('admin')")})
+  scope :all_user, (->_user{from("users u inner join products p on u.id = p.id")})
 
   searchkick text_start: :username
 

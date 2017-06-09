@@ -14,7 +14,7 @@ OrderStatus.create name: "Placed"
 OrderStatus.create name: "Shipped"
 OrderStatus.create name: "Cancelled"
 
-User.create username: "bui", email: "bui@gmail.com",
+User.create username: "admin", email: "admin@gmail.com",
   phone_number: "01669206686", password: "123456",
   password_confirmation: "123456", role: "admin"
 User.create username: "manh", email: "manh@gmail.com",

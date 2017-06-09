@@ -19,7 +19,7 @@
                   <%= link_to product.title, product_path(product) %>
                 </h5>
                 <div class="clearfix">
-                <%= link_to product.user.username, "#", class: "pull-left" %>
+                <%= link_to product.user.username, @user, class: "pull-left" %>
                 <div class="pull-right"><%= rating_for product, "quality", star: 5 %></div>
                 </div>
                 <br>

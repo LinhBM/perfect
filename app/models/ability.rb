@@ -8,13 +8,13 @@ class Ability
       cannot [:create, :update], Feedback
       cannot :manage, Product
       can :create, [CommentProduct, Likeship, Relationship, Category]
-      can :update, [CommentProduct, Feedback, User, Category]
+      can :manage, [CommentProduct, Feedback, User, Category]
       can :destroy, :all
     end
     if user.role == "sale_man"
       can :manage, [CommentProduct, Product]
       can :create, Feedback
-      can :manage, User
+      cannot :manage, User
       cannot :manage, Category
       can [:read, :create, :destroy], Relationship
       can [:create, :destroy], Likeship
