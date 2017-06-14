@@ -14,7 +14,7 @@
               <div class="card-title text-bold user-shop-card">
                 <%= user.username %>
               </div>
-              <%= rating_for user, "quality", star: 5, enable_half: true %>
+              <%= rating_for user, "quality", star: 5 %>
               <br>
               <%= link_to t("go_to_shop"), user_products_path(user),
                 class: "btn btn-info" %>

@@ -9,12 +9,16 @@ class Users::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     @user = User.find_by email: params[:user][:email]
-    if @user.present? && @user.role == "locked"
-      flash[:error] = t "user_locked"
-      redirect_to root_path
-    elsif @user.present?
-      #sign_in(params[:user][:email], params[:user][:password])
-      super
+    if @user.present?
+      if @user.bye?
+        flash[:error] = t "user_locked"
+        redirect_to user_session_path
+      else
+        super
+      end
+    else
+      flash[:error] = "ko ton tai"
+      redirect_to user_session_path
     end
   end
 

@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   before_action :load_user, only: :show
+  before_action :avg_user, only: :show
 
   def show
     #@current_order = current_order
@@ -25,5 +26,9 @@ class PagesController < ApplicationController
     #session[:order_id] = nil
     # order = Order.find session[:order_id]
     order.update_attributes(order_status_id: 2) if user_signed_in?
+  end
+
+  def avg_user
+    @rating = RatingCache.all
   end
 end

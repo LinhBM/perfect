@@ -2,7 +2,7 @@
   <% if user.image.url(:small).present? %>
     <td><%= image_tag user.image.url(:small) %></td>
   <% else %>
-    <td><% image_tag user.image.url, widht: 80, height: 80 %></td>
+    <td><% image_tag user.image.url %></td>
   <% end %>
 
   <td><%= link_to user.username, user_path(user) %></td>

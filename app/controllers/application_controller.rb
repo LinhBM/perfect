@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def current_order
     if session[:order_id].present?
-      Order.find session[:order_id]
+      Order.find_by id: session[:order_id]
     else
       order = current_user.orders.create order_status_id: 1 if user_signed_in?
       session[:order_id] = order.id

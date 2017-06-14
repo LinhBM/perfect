@@ -4,12 +4,15 @@ class ProductsController < ApplicationController
   before_action :find_product, except: [:index, :new, :create]
   before_action :load_category, only: [:new, :edit]
   before_action :load_order, only: [:index, :show]
+  before_action :find_cacheable_id, only: :index
 
   def index
     if params[:search].present?
       @products = Product.search(params[:search])
     else
       @products = @user.products
+      raty_id = @find_cacheable_id
+      @raty_id = RatingCache.all
     end
   end
 
@@ -75,5 +78,9 @@ class ProductsController < ApplicationController
 
   def load_order
     @order_item = current_order.order_items.new if user_signed_in?
+  end
+
+  def find_cacheable_id
+    @cacheable = Product.find_by id: params[:id]
   end
 end
