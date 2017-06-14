@@ -2,7 +2,6 @@ class PagesController < ApplicationController
   before_action :load_user, only: :show
 
   def show
-    @current_order = current_order
     if valid_page?
       render "pages/#{params[:page]}"
     else

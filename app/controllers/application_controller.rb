@@ -8,8 +8,9 @@ class ApplicationController < ActionController::Base
     if session[:order_id].present?
       Order.find_by id: session[:order_id]
     else
-      delele_session unless @order_status = OrderStatus.first
-      current_user.orders.create @order_status_id if user_signed_in?
+      order = current_user.orders.create order_status_id: 1 if user_signed_in?
+      session[:order_id] = order.id
+      order
     end
   end
 
@@ -19,6 +20,10 @@ class ApplicationController < ActionController::Base
       user_params.permit :username, :email, :phone_number, :image,
         :password, :password_confirmation
     end
+    devise_parameter_sanitizer.permit(:account_update) do |user_params|
+      user_params.permit :email, :image, :password, :password_confirmation,
+        :current_password
+    end
   end
 
   def page_error
@@ -27,5 +32,9 @@ class ApplicationController < ActionController::Base
 
   def delele_session
     session[:order_id] = nil
+  end
+
+  def find_sale
+    @user = User.find_by id: params[:id]
   end
 end

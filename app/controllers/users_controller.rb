@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_user, only: [:show, :destroy]
+  before_action :find_user, only: [:show, :destroy, :update]
 
   def index
-    @users = User.all.paginate page: params[:page]
+    if params[:search].present?
+      @users = User.search(params[:search])
+    else
+      @users = User.unless_admin.all.paginate page: params[:page]
+    end
   end
 
   def show
@@ -13,6 +17,14 @@ class UsersController < ApplicationController
         .find_by followed_id: @user.id
     else
       @following = current_user.active_relationships.build
+    end
+  end
+
+  def update
+    if @user.update_attributes(secure_params)
+      redirect_to users_path, notice: "User updated."
+    else
+      redirect_to users_path, alert: "Unable to update user."
     end
   end
 
@@ -29,5 +41,9 @@ class UsersController < ApplicationController
       redirect_to root_url
       flash[:danger] = t ".flash"
     end
+  end
+
+  def secure_params
+    params.require(:user).permit(:role)
   end
 end
